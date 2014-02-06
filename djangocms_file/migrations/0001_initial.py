@@ -2,19 +2,25 @@
 import datetime
 from south.db import db
 from south.v2 import SchemaMigration
-from django.db import models
+from django.db import models, connection
 
 
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'File'
-        db.create_table(u'djangocms_file_file', (
-            (u'cmsplugin_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['cms.CMSPlugin'], unique=True, primary_key=True)),
-            ('file', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
-        ))
-        db.send_create_signal(u'djangocms_file', ['File'])
+        table_names = connection.introspection.table_names()
+        if 'cmsplugin_file' in table_names:
+            db.rename_table('cmsplugin_file', 'djangocms_file_file')
+        elif 'file_file' in table_names:
+            db.rename_table('file_file', 'djangocms_file_file')
+        else:
+            # Adding model 'File'
+            db.create_table(u'djangocms_file_file', (
+                (u'cmsplugin_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['cms.CMSPlugin'], unique=True, primary_key=True)),
+                ('file', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
+                ('title', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
+            ))
+            db.send_create_signal(u'djangocms_file', ['File'])
 
 
     def backwards(self, orm):
