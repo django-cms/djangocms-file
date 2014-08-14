@@ -32,6 +32,12 @@ class File(CMSPlugin):
     """
     file = models.FileField(_("file"), upload_to=CMSPlugin.get_media_path)
     title = models.CharField(_("title"), max_length=255, null=True, blank=True)
+    target = models.CharField(_("target"), blank=True, max_length=100, choices=((
+        ("", _("same window")),
+        ("_blank", _("new window")),
+        ("_parent", _("parent window")),
+        ("_top", _("topmost frame")),
+    )))
     # CMS_ICON_EXTENSIONS and CMS_ICON_PATH are assumed to be plugin-specific,
     # and not included in cms.settings -- they are therefore imported
     # from django.conf.settings
