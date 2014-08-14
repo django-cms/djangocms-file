@@ -1,0 +1,35 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Stefano Brentegani <sbrentegani@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: django-cms\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-06 14:01+0100\n"
+"PO-Revision-Date: 2014-02-06 13:31+0000\n"
+"Last-Translator: Stefano Brentegani <sbrentegani@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/django-cms/language/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cms_plugins.py:12
+msgid "File"
+msgstr "File"
+
+#: models.py:33
+msgid "file"
+msgstr "file"
+
+#: models.py:34
+msgid "title"
+msgstr "titolo"
+
+#: templates/cms/plugins/file.html:6
+msgid "file missing!"
+msgstr "manca il file!"
