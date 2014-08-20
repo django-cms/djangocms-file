@@ -15,9 +15,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='File',
             fields=[
-                ('file', models.FileField(upload_to=cms.models.pluginmodel.get_plugin_media_path, verbose_name='file')),
-                ('title', models.CharField(max_length=255, null=True, verbose_name='title', blank=True)),
-                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(serialize=False, parent_link=True, auto_created=True, to='cms.CMSPlugin', primary_key=True)),
+                ('file', models.FileField(verbose_name='file', upload_to=cms.models.pluginmodel.get_plugin_media_path)),
+                ('title', models.CharField(verbose_name='title', blank=True, null=True, max_length=255)),
+                ('target', models.CharField(verbose_name='target', blank=True, default='', max_length=100, choices=[('', 'same window'), ('_blank', 'new window'), ('_parent', 'parent window'), ('_top', 'topmost frame')])),
             ],
             options={
                 'abstract': False,

@@ -45,7 +45,7 @@ class File(CMSPlugin):
         ("_blank", _("new window")),
         ("_parent", _("parent window")),
         ("_top", _("topmost frame")),
-    )))
+    )), default='')
     # CMS_ICON_EXTENSIONS and CMS_ICON_PATH are assumed to be plugin-specific,
     # and not included in cms.settings -- they are therefore imported
     # from django.conf.settings
