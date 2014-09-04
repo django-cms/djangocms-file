@@ -25,7 +25,7 @@ setup(
     author='Divio AG',
     author_email='info@divio.ch',
     url='https://github.com/divio/djangocms-file',
-    packages=['djangocms_file', 'djangocms_file.migrations'],
+    packages=['djangocms_file', 'djangocms_file.migrations', 'djangocms_file.migrations_django'],
     license='LICENSE.txt',
     platforms=['OS Independent'],
     classifiers=CLASSIFIERS,
