@@ -28,7 +28,7 @@ setup(
     packages=[
         'djangocms_file',
         'djangocms_file.migrations',
-        'djangocms_file.migrations_django'
+        'djangocms_file.south_migrations'
     ],
     license='LICENSE.txt',
     platforms=['OS Independent'],
