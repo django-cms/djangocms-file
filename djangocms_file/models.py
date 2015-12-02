@@ -40,14 +40,20 @@ class File(CMSPlugin):
     probably a performance concern.
     """
     file = models.FileField(_("file"), upload_to=get_plugin_media_path)
-    title = models.CharField(_("title"), max_length=255, null=True, blank=True)
+    title = models.CharField(
+        _("title"), max_length=255, null=True, blank=True,
+        help_text=_("Optional title to display. If not supplied, the filename "
+                    "will be used."))
     target = models.CharField(
         _("target"), blank=True, max_length=100, choices=((
             ("", _("same window")),
             ("_blank", _("new window")),
             ("_parent", _("parent window")),
             ("_top", _("topmost frame")),
-        )), default='')
+        )), default='', help_text=_("Optional link target."))
+    tooltip = models.CharField(
+        _("tooltip"), blank=True, max_length=255,
+        help_text=_("Optional tooltip."))
     # CMS_ICON_EXTENSIONS and CMS_ICON_PATH are assumed to be plugin-specific,
     # and not included in cms.settings -- they are therefore imported
     # from django.conf.settings
