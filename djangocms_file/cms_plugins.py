@@ -13,6 +13,12 @@ class FilePlugin(CMSPluginBase):
     render_template = "cms/plugins/file.html"
     text_enabled = True
 
+    fieldsets = [
+        (None, {
+            'fields': ('title', 'file', 'tooltip', 'target', )
+        })
+    ]
+
     def render(self, context, instance, placeholder):
         context.update({
             'object': instance,
