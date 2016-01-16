@@ -15,7 +15,7 @@ class FilePlugin(CMSPluginBase):
 
     fieldsets = [
         (None, {
-            'fields': ('title', 'file', 'tooltip', 'target', )
+            'fields': ('title', 'source', 'tooltip', 'target', )
         })
     ]
 
@@ -30,6 +30,7 @@ class FilePlugin(CMSPluginBase):
         file_icon = instance.get_icon_url()
         if file_icon:
             return file_icon
+        return settings.STATIC_URL + u"cms/img/icons/plugins/source.png"
         return settings.STATIC_URL + u"cms/img/icons/plugins/file.png"
 
 plugin_pool.register_plugin(FilePlugin)
