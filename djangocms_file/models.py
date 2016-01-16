@@ -39,7 +39,7 @@ class File(CMSPlugin):
     The icon search is currently performed within get_icon_url; this is
     probably a performance concern.
     """
-    file = models.FileField(_("file"), upload_to=get_plugin_media_path)
+    source = models.FileField(_("source"), upload_to=get_plugin_media_path)
     title = models.CharField(
         _("title"), max_length=255, null=True, blank=True,
         help_text=_("Optional title to display. If not supplied, the filename "
@@ -70,9 +70,9 @@ class File(CMSPlugin):
     def __str__(self):
         if self.title:
             return self.title
-        elif self.file:
+        elif self.source:
             # added if, because it raised attribute error when
-            # file wasn't defined
+            # source wasn't defined
             return self.get_file_name()
         return "<empty>"
 
@@ -85,10 +85,10 @@ class File(CMSPlugin):
         return None
 
     def file_exists(self):
-        return default_storage.exists(self.file.name)
+        return default_storage.exists(self.source.name)
 
     def get_file_name(self):
-        return os.path.basename(self.file.name)
+        return os.path.basename(self.source.name)
 
     def get_ext(self):
         return os.path.splitext(self.get_file_name())[1][1:].lower()
