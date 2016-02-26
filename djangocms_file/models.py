@@ -39,6 +39,12 @@ class File(CMSPlugin):
     The icon search is currently performed within get_icon_url; this is
     probably a performance concern.
     """
+    # Set cmsplugin_ptr and remove related_name to avoid field name clashes
+    # with any other plugin that has a field called "file".
+    # https://github.com/divio/django-cms/issues/5030
+    cmsplugin_ptr = models.OneToOneField(
+        CMSPlugin, related_name='+', parent_link=True)
+
     source = models.FileField(_("source"), upload_to=get_plugin_media_path)
     title = models.CharField(
         _("title"), max_length=255, null=True, blank=True,
