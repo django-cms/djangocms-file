@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import cms.models.pluginmodel
 
 
 class Migration(migrations.Migration):
@@ -12,11 +11,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='file',
-            name='source',
-            field=models.FileField(upload_to=cms.models.pluginmodel.get_plugin_media_path, verbose_name='source'),
-        ),
         migrations.AlterField(
             model_name='file',
             name='target',
