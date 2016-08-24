@@ -8,7 +8,7 @@ import cms.models.pluginmodel
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('djangocms_file', '0003_rename_file_field_20160115_1904'),
+        ('djangocms_file', '0004_set_related_name_for_cmsplugin_ptr'),
     ]
 
     operations = [
