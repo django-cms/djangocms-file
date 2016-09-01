@@ -19,6 +19,11 @@ class Migration(migrations.Migration):
             name='attributes',
             field=djangocms_attributes_field.fields.AttributesField(default=dict, verbose_name='Attributes', blank=True),
         ),
+        migrations.AddField(
+            model_name='file',
+            name='template',
+            field=models.CharField(default=b'default', max_length=255, verbose_name='Template', choices=[(b'default', 'Default')]),
+        ),
         migrations.RenameField(
             model_name='file',
             old_name='title',

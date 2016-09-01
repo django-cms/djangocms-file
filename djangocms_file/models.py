@@ -40,7 +40,16 @@ class File(CMSPlugin):
     Renders a file wrapped by an anchor
     """
     search_fields = ('name',)
+    TEMPLATE_CHOICES = [
+        ('default', _('Default')),
+    ]
 
+    template = models.CharField(
+        verbose_name=_('Template'),
+        choices=TEMPLATE_CHOICES + get_templates(),
+        default=TEMPLATE_CHOICES[0][0],
+        max_length=255,
+    )
     file_src = FilerFileField(
         verbose_name=_('File'),
         blank=False,
@@ -75,7 +84,7 @@ class File(CMSPlugin):
     attributes = AttributesField(
         verbose_name=_('Attributes'),
         blank=True,
-        excluded_keys=['title'],
+        excluded_keys=['title', 'target'],
     )
 
     # Add an app namespace to related_name to avoid field name clashes
@@ -103,7 +112,6 @@ class Folder(CMSPlugin):
         ('default', _('Default')),
     ]
 
-    # The label will be displayed as help text in the structure board view.
     template = models.CharField(
         verbose_name=_('Template'),
         choices=TEMPLATE_CHOICES + get_templates(),
@@ -133,7 +141,7 @@ class Folder(CMSPlugin):
     attributes = AttributesField(
         verbose_name=_('Attributes'),
         blank=True,
-        excluded_keys=['title'],
+        excluded_keys=['target'],
     )
 
     # Add an app namespace to related_name to avoid field name clashes
@@ -147,6 +155,13 @@ class Folder(CMSPlugin):
     )
 
     def __str__(self):
-        if self.folder_src and self.folder_src.label:
-            return self.folder_src.label
+        if self.folder_src and self.folder_src.name:
+            return self.folder_src.name
         return ugettext('<folder is missing>')
+
+    def get_files(self):
+        folder_files = []
+
+        for folder in self.folder_src.files:
+            folder_files.append(folder)
+        return folder_files

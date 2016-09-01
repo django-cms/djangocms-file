@@ -24,12 +24,16 @@ class FilePlugin(CMSPluginBase):
         (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
+                'template',
                 ('link_target', 'link_title'),
                 'show_file_size',
                 'attributes',
             )
         }),
     ]
+
+    def get_render_template(self, context, instance, placeholder):
+        return 'djangocms_file/{}/file.html'.format(instance.template)
 
 
 class FolderPlugin(CMSPluginBase):
@@ -40,13 +44,13 @@ class FolderPlugin(CMSPluginBase):
     fieldsets = [
         (None, {
             'fields': (
-                'template',
                 'folder_src',
             )
         }),
         (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
+                'template',
                 'link_target',
                 'show_file_size',
                 'attributes',
