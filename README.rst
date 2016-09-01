@@ -51,6 +51,26 @@ For a manual install:
 * run ``python manage.py migrate djangocms_file``
 
 
+Configuration
+-------------
+
+Note that the provided templates are very minimal by design. You are encouraged
+to adapt and override them to your project's requirements.
+
+This addon provides a ``default`` template for all instances. You can provide
+additional template choices by adding a ``DJANGOCMS_FILE_TEMPLATES``
+setting::
+
+    DJANGOCMS_FILE_TEMPLATES = [
+        ('feature', _('Featured Version')),
+    ]
+
+You'll need to create the `feature` folder inside ``templates/djangocms_file/``
+otherwise you will get a *template does not exist* error. You can do this by
+copying the ``default`` folder inside that directory and renaming it to
+``feature``.
+
+
 Running Tests
 -------------
 
