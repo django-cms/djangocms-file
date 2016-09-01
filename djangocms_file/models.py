@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 
 from django.db import models
@@ -16,6 +17,14 @@ except ImportError:
         """
         return instance.get_media_path(filename)
 from cms.utils.compat.dj import python_2_unicode_compatible
+
+
+LINK_TARGET = (
+    ('_blank', _('Open in new window.')),
+    ('_self', _('Open in same window.')),
+    ('_parent', _('Delegate to parent.')),
+    ('_top', _('Delegate to top.')),
+)
 
 
 @python_2_unicode_compatible
@@ -44,23 +53,42 @@ class File(CMSPlugin):
     # lowercase of the class name of this model.
     # https://github.com/divio/django-cms/issues/5030
     cmsplugin_ptr = models.OneToOneField(
-        CMSPlugin, related_name='djangocms_file_file', parent_link=True)
+        CMSPlugin,
+        related_name='djangocms_file_file',
+        parent_link=True,
+    )
 
-    file = models.FileField(_("file"), upload_to=get_plugin_media_path)
+    file = models.FileField(
+        verbose_name=_('file'),
+        upload_to=get_plugin_media_path,
+    )
     title = models.CharField(
-        _("title"), max_length=255, null=True, blank=True,
-        help_text=_("Optional title to display. If not supplied, the filename "
-                    "will be used."))
+        verbose_name=_('title'),
+        max_length=255,
+        null=True,
+        blank=True,
+        help_text=_('Optional title to display. If not supplied, the filename '
+                    'will be used.'),
+    )
     target = models.CharField(
-        _("target"), blank=True, max_length=100, choices=((
+        verbose_name=_('target'),
+        blank=True,
+        max_length=100,
+        choices=((
             ("", _("same window")),
             ("_blank", _("new window")),
             ("_parent", _("parent window")),
             ("_top", _("topmost frame")),
-        )), default='', help_text=_("Optional link target."))
+        )),
+        default='',
+        help_text=_('Optional link target.'),
+    )
     tooltip = models.CharField(
-        _("tooltip"), blank=True, max_length=255,
-        help_text=_("Optional tooltip."))
+        verbose_name=_('tooltip'),
+        blank=True,
+        max_length=255,
+        help_text=_("Optional tooltip."),
+    )
     # CMS_ICON_EXTENSIONS and CMS_ICON_PATH are assumed to be plugin-specific,
     # and not included in cms.settings -- they are therefore imported
     # from django.conf.settings
