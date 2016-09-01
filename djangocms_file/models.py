@@ -18,6 +18,8 @@ except ImportError:
         return instance.get_media_path(filename)
 from cms.utils.compat.dj import python_2_unicode_compatible
 
+from filer.fields.file import FilerFileField
+
 
 LINK_TARGET = (
     ('_blank', _('Open in new window.')),
@@ -48,20 +50,15 @@ class File(CMSPlugin):
     The icon search is currently performed within get_icon_url; this is
     probably a performance concern.
     """
-    # Add an app namespace to related_name to avoid field name clashes
-    # with any other plugins that have a field with the same name as the
-    # lowercase of the class name of this model.
-    # https://github.com/divio/django-cms/issues/5030
-    cmsplugin_ptr = models.OneToOneField(
-        CMSPlugin,
-        related_name='djangocms_file_file',
-        parent_link=True,
+
+    file_src = FilerFileField(
+        verbose_name=_('File'),
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
     )
 
-    file = models.FileField(
-        verbose_name=_('file'),
-        upload_to=get_plugin_media_path,
-    )
     title = models.CharField(
         verbose_name=_('title'),
         max_length=255,
@@ -89,6 +86,18 @@ class File(CMSPlugin):
         max_length=255,
         help_text=_("Optional tooltip."),
     )
+
+    # Add an app namespace to related_name to avoid field name clashes
+    # with any other plugins that have a field with the same name as the
+    # lowercase of the class name of this model.
+    # https://github.com/divio/django-cms/issues/5030
+    cmsplugin_ptr = models.OneToOneField(
+        CMSPlugin,
+        related_name='%(app_label)s_%(class)s',
+        parent_link=True,
+    )
+
+
     # CMS_ICON_EXTENSIONS and CMS_ICON_PATH are assumed to be plugin-specific,
     # and not included in cms.settings -- they are therefore imported
     # from django.conf.settings
@@ -105,7 +114,7 @@ class File(CMSPlugin):
     def __str__(self):
         if self.title:
             return self.title
-        elif self.file:
+        elif self.file_src:
             # added if, because it raised attribute error when
             # file wasn't defined
             return self.get_file_name()
@@ -120,10 +129,10 @@ class File(CMSPlugin):
         return None
 
     def file_exists(self):
-        return default_storage.exists(self.file.name)
+        return default_storage.exists(self.file_src.name)
 
     def get_file_name(self):
-        return os.path.basename(self.file.name)
+        return os.path.basename(self.file_src.name)
 
     def get_ext(self):
         return os.path.splitext(self.get_file_name())[1][1:].lower()
