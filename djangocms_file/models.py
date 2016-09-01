@@ -1,90 +1,83 @@
 # -*- coding: utf-8 -*-
+"""
+Enables the user to add a "File" plugin that displays a file wrapped by
+an <anchor> tag.
+"""
 import os
 
 from django.db import models
 from django.conf import settings
-from django.core.files.storage import default_storage
-from django.utils.translation import ugettext_lazy as _
+from django.utils.encoding import python_2_unicode_compatible
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 from cms.models import CMSPlugin
-try:
-    from cms.models import get_plugin_media_path
-except ImportError:
-    def get_plugin_media_path(instance, filename):
-        """
-        See cms.models.pluginmodel.get_plugin_media_path on django CMS 3.0.4+
-        for information
-        """
-        return instance.get_media_path(filename)
-from cms.utils.compat.dj import python_2_unicode_compatible
+
+from djangocms_attributes_field.fields import AttributesField
 
 from filer.fields.file import FilerFileField
+from filer.fields.folder import FilerFolderField
 
 
 LINK_TARGET = (
-    ('_blank', _('Open in new window.')),
     ('_self', _('Open in same window.')),
+    ('_blank', _('Open in new window.')),
     ('_parent', _('Delegate to parent.')),
     ('_top', _('Delegate to top.')),
 )
 
 
+# Add additional choices through the ``settings.py``.
+def get_templates():
+    choices = getattr(
+        settings,
+        'DJANGOCMS_FILE_TEMPLATES',
+        [],
+    )
+    return choices
+
+
 @python_2_unicode_compatible
 class File(CMSPlugin):
     """
-    Plugin for storing any type of file.
-
-    Default template displays download link with icon (if available) and file
-    size.
-
-    Icons are searched for within <MEDIA_ROOT>/<CMS_FILE_ICON_PATH>
-    (CMS_FILE_ICON_PATH is a plugin-specific setting which defaults to
-    "<CMS_MEDIA_PATH>/img/icons/filetypes") with filenames of the form
-    <file_ext>.<icon_ext>, where <file_ext> is the extension of the file
-    itself, and <icon_ext> is one of <CMS_FILE_ICON_EXTENSIONS> (another plugin
-     specific setting, which defaults to ('gif', 'png'))
-
-    This could be updated to use the mimetypes library to determine the type of
-    file rather than storing a separate icon for each different extension.
-
-    The icon search is currently performed within get_icon_url; this is
-    probably a performance concern.
+    Renders a file wrapped by an anchor
     """
+    search_fields = ('name',)
 
     file_src = FilerFileField(
         verbose_name=_('File'),
-        blank=True,
+        blank=False,
         null=True,
         on_delete=models.SET_NULL,
         related_name='+',
     )
-
-    title = models.CharField(
-        verbose_name=_('title'),
+    file_name = models.CharField(
+        verbose_name=_('Name'),
+        blank=True,
         max_length=255,
-        null=True,
-        blank=True,
-        help_text=_('Optional title to display. If not supplied, the filename '
-                    'will be used.'),
+        help_text=_('Overrides the default file name with the given value.'),
     )
-    target = models.CharField(
-        verbose_name=_('target'),
+    link_target = models.CharField(
+        verbose_name=_('Link target'),
+        choices=LINK_TARGET,
         blank=True,
-        max_length=100,
-        choices=((
-            ("", _("same window")),
-            ("_blank", _("new window")),
-            ("_parent", _("parent window")),
-            ("_top", _("topmost frame")),
-        )),
+        max_length=255,
         default='',
-        help_text=_('Optional link target.'),
     )
-    tooltip = models.CharField(
-        verbose_name=_('tooltip'),
+    link_title = models.CharField(
+        verbose_name=_('Link title'),
         blank=True,
         max_length=255,
-        help_text=_("Optional tooltip."),
+    )
+    show_file_size = models.BooleanField(
+        verbose_name=_('Show file size'),
+        blank=True,
+        default=False,
+        help_text=_('Appends the file size at the end of the name.'),
+    )
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['title'],
     )
 
     # Add an app namespace to related_name to avoid field name clashes
@@ -97,44 +90,64 @@ class File(CMSPlugin):
         parent_link=True,
     )
 
+    def __str__(self):
+        if self.file_src and self.file_src.label:
+            return self.file_src.label
+        return str(self.file_name or self.pk)
+    # TODO file does not exist anymore
 
-    # CMS_ICON_EXTENSIONS and CMS_ICON_PATH are assumed to be plugin-specific,
-    # and not included in cms.settings -- they are therefore imported
-    # from django.conf.settings
-    ICON_EXTENSIONS = getattr(
-        settings, "CMS_FILE_ICON_EXTENSIONS", ('gif', 'png'))
-    ICON_PATH = getattr(
-        settings, "CMS_FILE_ICON_PATH",
-        os.path.join(settings.STATIC_ROOT, "cms", "img", "icons/filetypes"))
 
-    ICON_URL = getattr(
-        settings, "CMS_FILE_ICON_URL", "%s%s/%s/%s/" % (
-            settings.STATIC_URL, "cms", "img", "icons/filetypes"))
+@python_2_unicode_compatible
+class Folder(CMSPlugin):
+    """
+    Renders a folder plugin to the selected tempalte
+    """
+    TEMPLATE_CHOICES = [
+        ('default', _('Default')),
+    ]
+
+    # The label will be displayed as help text in the structure board view.
+    template = models.CharField(
+        verbose_name=_('Template'),
+        choices=TEMPLATE_CHOICES + get_templates(),
+        default=TEMPLATE_CHOICES[0][0],
+        max_length=255,
+    )
+    folder_src = FilerFolderField(
+        verbose_name=_('Folder'),
+        blank=False,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
+    link_target = models.CharField(
+        verbose_name=_('Link target'),
+        choices=LINK_TARGET,
+        blank=True,
+        max_length=255,
+        default='',
+    )
+    show_file_size = models.BooleanField(
+        verbose_name=_('Show file size'),
+        blank=True,
+        default=False,
+        help_text=_('Appends the file size at the end of the name.'),
+    )
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+        excluded_keys=['title'],
+    )
+
+    # Add an app namespace to related_name to avoid field name clashes
+    # with any other plugins that have a field with the same name as the
+    # lowercase of the class name of this model.
+    # https://github.com/divio/django-cms/issues/5030
+    cmsplugin_ptr = models.OneToOneField(
+        CMSPlugin,
+        related_name='%(app_label)s_%(class)s',
+        parent_link=True,
+    )
 
     def __str__(self):
-        if self.title:
-            return self.title
-        elif self.file_src:
-            # added if, because it raised attribute error when
-            # file wasn't defined
-            return self.get_file_name()
-        return "<empty>"
-
-    def get_icon_url(self):
-        path_base = os.path.join(self.ICON_PATH, self.get_ext())
-        url_base = '%s%s' % (self.ICON_URL, self.get_ext())
-        for ext in self.ICON_EXTENSIONS:
-            if os.path.exists("%s.%s" % (path_base, ext)):
-                return "%s.%s" % (url_base, ext)
-        return None
-
-    def file_exists(self):
-        return default_storage.exists(self.file_src.name)
-
-    def get_file_name(self):
-        return os.path.basename(self.file_src.name)
-
-    def get_ext(self):
-        return os.path.splitext(self.get_file_name())[1][1:].lower()
-
-    search_fields = ('title',)
+        return ''
