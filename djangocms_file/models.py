@@ -3,8 +3,6 @@
 Enables the user to add a "File" plugin that displays a file wrapped by
 an <anchor> tag.
 """
-import os
-
 from django.db import models
 from django.conf import settings
 from django.utils.encoding import python_2_unicode_compatible
@@ -93,8 +91,7 @@ class File(CMSPlugin):
     def __str__(self):
         if self.file_src and self.file_src.label:
             return self.file_src.label
-        return str(self.file_name or self.pk)
-    # TODO file does not exist anymore
+        return ugettext('<file is missing>')
 
 
 @python_2_unicode_compatible
@@ -150,4 +147,6 @@ class Folder(CMSPlugin):
     )
 
     def __str__(self):
-        return ''
+        if self.folder_src and self.folder_src.label:
+            return self.folder_src.label
+        return ugettext('<folder is missing>')
