@@ -10,7 +10,7 @@ import djangocms_attributes_field.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cms', '0016_auto_20160608_1535'),
+        ('cms', '0014_auto_20160404_1908'),
         ('filer', '0006_auto_20160623_1627'),
         ('djangocms_file', '0007_adapted_fields'),
     ]
