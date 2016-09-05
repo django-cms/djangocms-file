@@ -9,6 +9,7 @@
             <span>{{ file.size|filesizeformat }}</span>
         {% endif %}
     </a>
+    {% if not forloop.last %}<br>{% endif %}
 {% empty %}
     <p>{% trans "No files were found in the specified folder." %}</p>
 {% endfor %}

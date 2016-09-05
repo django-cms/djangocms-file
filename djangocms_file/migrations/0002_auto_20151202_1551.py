@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='file',
             name='target',
-            field=models.CharField(default=b'', choices=[(b'', 'same window'), (b'_blank', 'new window'), (b'_parent', 'parent window'), (b'_top', 'topmost frame')], max_length=100, blank=True, help_text='Optional link target.', verbose_name='target'),
+            field=models.CharField(default='', choices=[('', 'same window'), ('_blank', 'new window'), ('_parent', 'parent window'), ('_top', 'topmost frame')], max_length=100, blank=True, help_text='Optional link target.', verbose_name='target'),
             preserve_default=True,
         ),
         migrations.AlterField(

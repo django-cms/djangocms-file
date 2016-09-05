@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='file',
             name='template',
-            field=models.CharField(default=b'default', max_length=255, verbose_name='Template', choices=[(b'default', 'Default')]),
+            field=models.CharField(default='default', max_length=255, verbose_name='Template', choices=[('default', 'Default')]),
         ),
         migrations.RenameField(
             model_name='file',

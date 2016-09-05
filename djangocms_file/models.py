@@ -40,6 +40,7 @@ class File(CMSPlugin):
     Renders a file wrapped by an anchor
     """
     search_fields = ('name',)
+
     TEMPLATE_CHOICES = [
         ('default', _('Default')),
     ]
@@ -84,7 +85,7 @@ class File(CMSPlugin):
     attributes = AttributesField(
         verbose_name=_('Attributes'),
         blank=True,
-        excluded_keys=['title', 'target'],
+        excluded_keys=['href', 'title', 'target'],
     )
 
     # Add an app namespace to related_name to avoid field name clashes
@@ -100,7 +101,17 @@ class File(CMSPlugin):
     def __str__(self):
         if self.file_src and self.file_src.label:
             return self.file_src.label
+        return str(self.pk)
+
+    def get_short_description(self):
+        if self.file_src and self.file_src.label:
+            return self.file_src.label
         return ugettext('<file is missing>')
+
+    def copy_relations(self, oldinstance):
+        # Because we have a ForeignKey, it's required to copy over
+        # the reference from the instance to the new plugin.
+        self.file_src = oldinstance.file_src
 
 
 @python_2_unicode_compatible
@@ -141,7 +152,7 @@ class Folder(CMSPlugin):
     attributes = AttributesField(
         verbose_name=_('Attributes'),
         blank=True,
-        excluded_keys=['target'],
+        excluded_keys=['href', 'target'],
     )
 
     # Add an app namespace to related_name to avoid field name clashes
@@ -157,7 +168,17 @@ class Folder(CMSPlugin):
     def __str__(self):
         if self.folder_src and self.folder_src.name:
             return self.folder_src.name
+        return str(self.pk)
+
+    def get_short_description(self):
+        if self.folder_src and self.folder_src.name:
+            return self.folder_src.name
         return ugettext('<folder is missing>')
+
+    def copy_relations(self, oldinstance):
+        # Because we have a ForeignKey, it's required to copy over
+        # the reference from the instance to the new plugin.
+        self.folder_src = oldinstance.folder_src
 
     def get_files(self):
         folder_files = []
