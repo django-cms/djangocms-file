@@ -11,7 +11,6 @@ from .models import File, Folder
 class FilePlugin(CMSPluginBase):
     model = File
     name = _('File')
-    render_template = 'djangocms_file/file.html'
     text_enabled = True
 
     fieldsets = [
