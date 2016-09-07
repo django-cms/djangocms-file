@@ -17,18 +17,21 @@ from filer.fields.folder import FilerFolderField
 
 
 LINK_TARGET = (
-    ('_self', _('Open in same window.')),
-    ('_blank', _('Open in new window.')),
-    ('_parent', _('Delegate to parent.')),
-    ('_top', _('Delegate to top.')),
+    ('_self', _('Open in same window')),
+    ('_blank', _('Open in new window')),
+    ('_parent', _('Delegate to parent')),
+    ('_top', _('Delegate to top')),
 )
 
 
 # Add additional choices through the ``settings.py``.
 def get_templates():
-    choices = getattr(
+    choices = [
+        ('default', _('Default')),
+    ]
+    choices += getattr(
         settings,
-        'DJANGOCMS_FILE_TEMPLATES',
+        'DJANGOCMS_PICTURE_TEMPLATES',
         [],
     )
     return choices
@@ -41,14 +44,10 @@ class File(CMSPlugin):
     """
     search_fields = ('name',)
 
-    TEMPLATE_CHOICES = [
-        ('default', _('Default')),
-    ]
-
     template = models.CharField(
         verbose_name=_('Template'),
-        choices=TEMPLATE_CHOICES + get_templates(),
-        default=TEMPLATE_CHOICES[0][0],
+        choices=get_templates(),
+        default=get_templates()[0][0],
         max_length=255,
     )
     file_src = FilerFileField(
@@ -104,6 +103,8 @@ class File(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
+        if self.file_name:
+            return self.file_name
         if self.file_src and self.file_src.label:
             return self.file_src.label
         return ugettext('<file is missing>')
@@ -119,14 +120,10 @@ class Folder(CMSPlugin):
     """
     Renders a folder plugin to the selected tempalte
     """
-    TEMPLATE_CHOICES = [
-        ('default', _('Default')),
-    ]
-
     template = models.CharField(
         verbose_name=_('Template'),
-        choices=TEMPLATE_CHOICES + get_templates(),
-        default=TEMPLATE_CHOICES[0][0],
+        choices=get_templates(),
+        default=get_templates()[0][0],
         max_length=255,
     )
     folder_src = FilerFolderField(

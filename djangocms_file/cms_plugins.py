@@ -57,6 +57,11 @@ class FolderPlugin(CMSPluginBase):
         }),
     ]
 
+    def render(self, context, instance, placeholder):
+        context['folder_files'] = instance.get_files()
+
+        return super(FolderPlugin, self).render(context, instance, placeholder)
+
     def get_render_template(self, context, instance, placeholder):
         return 'djangocms_file/{}/folder.html'.format(instance.template)
 

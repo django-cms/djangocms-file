@@ -1,6 +1,6 @@
 {% load i18n %}
 
-{% for file in instance.get_files %}
+{% for file in folder_files %}
     <a href="{{ file.url }}"
         {% if instance.link_target %} target="{{ instance.link_target }}"{% endif %}
         {{ instance.attributes_str }}>
@@ -18,7 +18,7 @@
     # https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
     # https://github.com/divio/django-filer/blob/master/filer/models/filemodels.py
     {{ instance.folder_src }}
-    {{ instance.get_files }}
+    {{ instance.get_files }} or {{ folder_files }}
     # Available variables:
     {{ instance.template }}
     {{ instance.link_target }}
