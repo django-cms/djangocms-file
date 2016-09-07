@@ -31,7 +31,7 @@ def get_templates():
     ]
     choices += getattr(
         settings,
-        'DJANGOCMS_PICTURE_TEMPLATES',
+        'DJANGOCMS_FILE_TEMPLATES',
         [],
     )
     return choices
