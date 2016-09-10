@@ -10,6 +10,7 @@ Changelog
 * Cleaned up file structure
 * Removed Django < 1.8 support
 * Adapted ``README.txt``
+* Added translations
 
 
 1.0.0 (2016-03-04)
