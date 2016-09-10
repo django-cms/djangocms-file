@@ -1,8 +1,8 @@
-*.log
-*.pot
 *.pyc
-local_settings.py
-djangocms_file.egg-info
-.tox
-build
-dist
+*.egg-info
+.DS_Store
+.idea/
+.tox/
+.eggs/
+dist/
+build/
