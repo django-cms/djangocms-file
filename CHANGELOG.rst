@@ -3,7 +3,7 @@ Changelog
 =========
 
 
-2.0.0 (unreleased)
+2.0.0 (2016-13-09)
 ==================
 
 * Added tests
