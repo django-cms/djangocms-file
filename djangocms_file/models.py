@@ -103,7 +103,7 @@ class File(CMSPlugin):
         return str(self.pk)
 
     def get_short_description(self):
-        if self.file_name:
+        if self.file_src and self.file_name:
             return self.file_name
         if self.file_src and self.file_src.label:
             return self.file_src.label
@@ -179,7 +179,7 @@ class Folder(CMSPlugin):
 
     def get_files(self):
         folder_files = []
-
-        for folder in self.folder_src.files:
-            folder_files.append(folder)
+        if self.folder_src:
+            for folder in self.folder_src.files:
+                folder_files.append(folder)
         return folder_files

@@ -1,54 +1,94 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: django-cms\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 14:29+0200\n"
-"PO-Revision-Date: 2014-08-15 08:39+0000\n"
-"Last-Translator: Patrick Lauber <patrick.lauber@divio.ch>\n"
-"Language-Team: Belarusian (http://www.transifex.com/projects/p/django-cms/language/be/)\n"
+"POT-Creation-Date: 2016-09-12 20:24+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language-Team: Belarusian (https://www.transifex.com/divio/teams/58664/be/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: be\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: cms_plugins.py:12
+#: cms_plugins.py:13 models.py:54
 msgid "File"
 msgstr ""
 
-#: models.py:41
-msgid "file"
+#: cms_plugins.py:23 cms_plugins.py:49
+msgid "Advanced settings"
 msgstr ""
 
-#: models.py:42
-msgid "title"
+#: cms_plugins.py:40 models.py:130
+msgid "Folder"
 msgstr ""
 
-#: models.py:43
-msgid "target"
+#: models.py:20
+msgid "Open in same window"
 msgstr ""
 
-#: models.py:44
-msgid "same window"
+#: models.py:21
+msgid "Open in new window"
 msgstr ""
 
-#: models.py:45
-msgid "new window"
+#: models.py:22
+msgid "Delegate to parent"
 msgstr ""
 
-#: models.py:46
-msgid "parent window"
+#: models.py:23
+msgid "Delegate to top"
 msgstr ""
 
-#: models.py:47
-msgid "topmost frame"
+#: models.py:30
+msgid "Default"
 msgstr ""
 
-#: templates/cms/plugins/file.html:6
-msgid "file missing!"
+#: models.py:48 models.py:124
+msgid "Template"
+msgstr ""
+
+#: models.py:61
+msgid "Name"
+msgstr ""
+
+#: models.py:64
+msgid "Overrides the default file name with the given value."
+msgstr ""
+
+#: models.py:67 models.py:137
+msgid "Link target"
+msgstr ""
+
+#: models.py:74
+msgid "Link title"
+msgstr ""
+
+#: models.py:79 models.py:144
+msgid "Show file size"
+msgstr ""
+
+#: models.py:82 models.py:147
+msgid "Appends the file size at the end of the name."
+msgstr ""
+
+#: models.py:85 models.py:150
+msgid "Attributes"
+msgstr ""
+
+#: models.py:110
+msgid "<file is missing>"
+msgstr ""
+
+#: models.py:173
+msgid "<folder is missing>"
+msgstr ""
+
+#: templates/djangocms_file/default/folder.html:14
+msgid "No files were found in the specified folder."
 msgstr ""
