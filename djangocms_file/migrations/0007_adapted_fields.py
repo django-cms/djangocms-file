@@ -41,12 +41,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='file',
-            name='file_name',
-            field=models.CharField(default='', help_text='Overrides the default file name with the given value.', max_length=255, verbose_name='Name', blank=True),
-            preserve_default=False,
-        ),
-        migrations.AlterField(
-            model_name='file',
             name='link_target',
             field=models.CharField(default='', max_length=255, verbose_name='Link target', blank=True, choices=[('_self', 'Open in same window'), ('_blank', 'Open in new window'), ('_parent', 'Delegate to parent'), ('_top', 'Delegate to top')]),
         ),
