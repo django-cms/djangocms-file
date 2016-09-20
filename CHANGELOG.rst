@@ -3,7 +3,7 @@ Changelog
 =========
 
 
-2.0.1 (unreleased)
+2.0.1 (2016-20-09)
 ==================
 
 * Fixes an issue where images throw an ``AttributeError``
