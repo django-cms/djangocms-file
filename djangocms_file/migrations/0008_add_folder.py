@@ -5,6 +5,7 @@ from django.db import migrations, models
 import django.db.models.deletion
 import filer.fields.folder
 import djangocms_attributes_field.fields
+from djangocms_file.models import get_templates
 
 
 class Migration(migrations.Migration):
@@ -19,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Folder',
             fields=[
-                ('template', models.CharField(default='default', max_length=255, verbose_name='Template', choices=[('default', 'Default')])),
+                ('template', models.CharField(default=get_templates()[0][0], max_length=255, verbose_name='Template', choices=get_templates())),
                 ('link_target', models.CharField(default='', max_length=255, verbose_name='Link target', blank=True, choices=[('_self', 'Open in same window'), ('_blank', 'Open in new window'), ('_parent', 'Delegate to parent'), ('_top', 'Delegate to top')])),
                 ('show_file_size', models.BooleanField(default=False, help_text='Appends the file size at the end of the name.', verbose_name='Show file size')),
                 ('attributes', djangocms_attributes_field.fields.AttributesField(default=dict, verbose_name='Attributes', blank=True)),
