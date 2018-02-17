@@ -62,7 +62,9 @@ to adapt and override them to your project's requirements.
 
 This addon provides a ``default`` template for all instances. You can provide
 additional template choices by adding a ``DJANGOCMS_FILE_TEMPLATES``
-setting::
+setting:
+
+.. code-block:: python
 
     DJANGOCMS_FILE_TEMPLATES = [
         ('feature', _('Featured Version')),
@@ -77,7 +79,9 @@ copying the ``default`` folder inside that directory and renaming it to
 Running Tests
 -------------
 
-You can run tests by executing::
+You can run tests by executing:
+
+.. code-block:: bash
 
     virtualenv env
     source env/bin/activate
