@@ -95,6 +95,7 @@ class File(CMSPlugin):
         CMSPlugin,
         related_name='%(app_label)s_%(class)s',
         parent_link=True,
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):
@@ -160,6 +161,7 @@ class Folder(CMSPlugin):
         CMSPlugin,
         related_name='%(app_label)s_%(class)s',
         parent_link=True,
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):
