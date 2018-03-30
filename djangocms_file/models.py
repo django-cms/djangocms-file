@@ -178,8 +178,6 @@ class Folder(CMSPlugin):
         self.folder_src = oldinstance.folder_src
 
     def get_files(self):
-        folder_files = []
-        if self.folder_src:
-            for folder in self.folder_src.files:
-                folder_files.append(folder)
-        return folder_files
+        if not self.folder_src:
+            return []
+        return list(self.folder_src.files)
