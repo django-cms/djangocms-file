@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase
-
 from filer.models import File as FilerFile
 from filer.models import Folder as FilerFolder
 

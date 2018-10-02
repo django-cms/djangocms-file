@@ -3,18 +3,15 @@
 Enables the user to add a "File" plugin that displays a file wrapped by
 an <anchor> tag.
 """
-from django.db import models
-from django.conf import settings
-from django.utils.encoding import python_2_unicode_compatible
-from django.utils.translation import ugettext, ugettext_lazy as _
-
 from cms.models import CMSPlugin
-
+from django.conf import settings
+from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
+from django.utils.translation import ugettext
+from django.utils.translation import ugettext_lazy as _
 from djangocms_attributes_field.fields import AttributesField
-
 from filer.fields.file import FilerFileField
 from filer.fields.folder import FilerFolderField
-
 
 LINK_TARGET = (
     ('_self', _('Open in same window')),
@@ -95,6 +92,7 @@ class File(CMSPlugin):
         CMSPlugin,
         related_name='%(app_label)s_%(class)s',
         parent_link=True,
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):
@@ -160,6 +158,7 @@ class Folder(CMSPlugin):
         CMSPlugin,
         related_name='%(app_label)s_%(class)s',
         parent_link=True,
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):
