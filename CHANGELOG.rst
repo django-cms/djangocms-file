@@ -3,6 +3,14 @@ Changelog
 =========
 
 
+2.0.3 (unreleased)
+==================
+
+* Add support for Django 1.10, 1.11, 2.0 and 2.1
+* Adapted testing infrastructure (tox/travis) to incorporate
+  django CMS 3.5 and 4.0
+
+
 2.0.2 (2016-11-22)
 ==================
 
