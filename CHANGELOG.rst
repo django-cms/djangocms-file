@@ -3,7 +3,7 @@ Changelog
 =========
 
 
-2.0.3 (unreleased)
+2.0.3 (2018-11-05)
 ==================
 
 * Add support for Django 1.10, 1.11, 2.0 and 2.1
