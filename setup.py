@@ -5,9 +5,9 @@ from setuptools import find_packages, setup
 from djangocms_file import __version__
 
 REQUIREMENTS = [
-    'django-cms>=3.2.0',
+    'django-cms>=3.4.5',
     'django-filer>=1.2.4',
-    'djangocms-attributes-field>=0.1.1',
+    'djangocms-attributes-field>=0.4.0',
 ]
 
 
