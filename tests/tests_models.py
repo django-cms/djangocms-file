@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase
+from django.core.management import call_command
+from django.utils.six import StringIO
 from filer.models import File as FilerFile
 from filer.models import Folder as FilerFolder
 
