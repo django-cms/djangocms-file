@@ -35,7 +35,7 @@ def get_templates():
 
 
 @python_2_unicode_compatible
-class File(CMSPlugin):
+class AbstractFile(CMSPlugin):
     """
     Renders a file wrapped by an anchor
     """
@@ -95,6 +95,9 @@ class File(CMSPlugin):
         on_delete=models.CASCADE,
     )
 
+    class Meta:
+        abstract = True
+
     def __str__(self):
         if self.file_src and self.file_src.label:
             return self.file_src.label
@@ -114,7 +117,7 @@ class File(CMSPlugin):
 
 
 @python_2_unicode_compatible
-class Folder(CMSPlugin):
+class AbstractFolder(CMSPlugin):
     """
     Renders a folder plugin to the selected tempalte
     """
@@ -161,6 +164,9 @@ class Folder(CMSPlugin):
         on_delete=models.CASCADE,
     )
 
+    class Meta:
+        abstract = True
+
     def __str__(self):
         if self.folder_src and self.folder_src.name:
             return self.folder_src.name
@@ -180,3 +186,15 @@ class Folder(CMSPlugin):
         if not self.folder_src:
             return []
         return list(self.folder_src.files)
+
+
+class File(AbstractFile):
+
+    class Meta:
+        abstract = False
+
+
+class Folder(AbstractFolder):
+
+    class Meta:
+        abstract = False
