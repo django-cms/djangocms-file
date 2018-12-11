@@ -7,6 +7,10 @@ Changelog
 
 * Fixed test matrix
 * Exclude ``tests`` folder from release build
+* Added abstract models
+* Added missing migrations for Django 2.1
+* Added abstract models for ``File`` and ``Folder``
+* Improved readability of ``Folder.get_files``
 
 
 2.1.0 (2018-11-13)
