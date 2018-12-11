@@ -37,15 +37,14 @@ class FolderTestCase(TestCase):
 
 
 class MigrationTestCase(TestCase):
+
     def test_makemigrations(self):
-    """
-    Fail if there are schema changes with no migrations.
-    """
-    app_name = 'djangocms_file'
-    out = StringIO()
-    call_command('makemigrations', dry_run=True, no_input=True, stdout=out)
-    output = out.getvalue()
-    self.assertNotIn(app_name, output, (
-        '`makemigrations` thinks there are schema changes without'
-        ' migrations.'
-    ))
+        """Fail if there are schema changes with no migrations."""
+        app_name = 'djangocms_file'
+        out = StringIO()
+        call_command('makemigrations', dry_run=True, no_input=True, stdout=out)
+        output = out.getvalue()
+        self.assertNotIn(app_name, output, (
+            '`makemigrations` thinks there are schema changes without'
+            ' migrations.'
+        ))
