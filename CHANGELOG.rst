@@ -2,6 +2,15 @@
 Changelog
 =========
 
+
+2.2.1 (unreleased)
+==================
+
+* Extended test matrix
+* Added isort and adapted imports
+* Adapted code base to align with other supported addons
+
+
 2.2.0 (2018-12-12)
 ==================
 
