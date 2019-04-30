@@ -3,7 +3,7 @@ Changelog
 =========
 
 
-2.3.0 (unreleased)
+2.3.0 (2019-04-30)
 ==================
 
 * Added support for Django 2.2 and django CMS 3.7
