@@ -3,6 +3,13 @@ Changelog
 =========
 
 
+2.3.1 (unreleased)
+==================
+
+* Added further tests to raise coverage
+* Fixed smaller issues found during testing
+
+
 2.3.0 (2019-04-30)
 ==================
 
