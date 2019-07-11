@@ -13,7 +13,7 @@ def migrate_to_filer(apps, schema_editor):
     FileInstance = apps.get_model('djangocms_file', 'File')
     plugins = FileInstance.objects.all()
 
-    for plugin in plugins:
+    for plugin in plugins:  # pragma: no cover
         if plugin.file:
             filesrc = File.objects.get_or_create(
                 file=plugin.file.file,
