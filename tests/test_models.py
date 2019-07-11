@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
-from django.core.exceptions import ValidationError
 from django.test import TestCase
 
 from djangocms_file.models import LINK_TARGET, File, Folder, get_templates
