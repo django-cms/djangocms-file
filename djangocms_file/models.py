@@ -10,13 +10,12 @@ from django.db import models
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from six import python_2_unicode_compatible
-
 from cms.models import CMSPlugin
 
 from djangocms_attributes_field.fields import AttributesField
 from filer.fields.file import FilerFileField
 from filer.fields.folder import FilerFolderField
+from six import python_2_unicode_compatible
 
 
 LINK_TARGET = (
