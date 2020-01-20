@@ -11,7 +11,7 @@ matrix:
       env: TOX_ENV='isort'
       # Django 1.11
     - python: 2.7
-      env: DJANGO='dj111' CMS='cms34'
+      env: DJANGO='dj111' CMS='cms37'
     - python: 3.4
       env: DJANGO='dj111' CMS='cms35'
     - python: 3.5
