@@ -35,7 +35,6 @@ def get_templates():
     return choices
 
 
-@
 class AbstractFile(CMSPlugin):
     """
     Renders a file wrapped by an anchor
@@ -117,7 +116,6 @@ class AbstractFile(CMSPlugin):
         self.file_src = oldinstance.file_src
 
 
-@
 class AbstractFolder(CMSPlugin):
     """
     Renders a folder plugin to the selected tempalte
