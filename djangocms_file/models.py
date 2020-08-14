@@ -1,21 +1,17 @@
-# -*- coding: utf-8 -*-
 """
 Enables the user to add a "File" plugin that displays a file wrapped by
 an <anchor> tag.
 """
-from __future__ import unicode_literals
-
 from django.conf import settings
 from django.db import models
-from django.utils.translation import ugettext
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext
+from django.utils.translation import gettext_lazy as _
 
 from cms.models import CMSPlugin
 
 from djangocms_attributes_field.fields import AttributesField
 from filer.fields.file import FilerFileField
 from filer.fields.folder import FilerFolderField
-from six import python_2_unicode_compatible
 
 
 LINK_TARGET = (
@@ -39,7 +35,7 @@ def get_templates():
     return choices
 
 
-@python_2_unicode_compatible
+@
 class AbstractFile(CMSPlugin):
     """
     Renders a file wrapped by an anchor
@@ -113,7 +109,7 @@ class AbstractFile(CMSPlugin):
             return self.file_name
         if self.file_src and self.file_src.label:
             return self.file_src.label
-        return ugettext('<file is missing>')
+        return gettext('<file is missing>')
 
     def copy_relations(self, oldinstance):
         # Because we have a ForeignKey, it's required to copy over
@@ -121,7 +117,7 @@ class AbstractFile(CMSPlugin):
         self.file_src = oldinstance.file_src
 
 
-@python_2_unicode_compatible
+@
 class AbstractFolder(CMSPlugin):
     """
     Renders a folder plugin to the selected tempalte
@@ -180,7 +176,7 @@ class AbstractFolder(CMSPlugin):
     def get_short_description(self):
         if self.folder_src and self.folder_src.name:
             return self.folder_src.name
-        return ugettext('<folder is missing>')
+        return gettext('<folder is missing>')
 
     def copy_relations(self, oldinstance):
         # Because we have a ForeignKey, it's required to copy over
