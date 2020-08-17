@@ -6,7 +6,7 @@ from djangocms_file import __version__
 
 REQUIREMENTS = [
     'django-cms>=3.7',
-    'django-filer>=1.2.4',
+    'django-filer>=1.7',
     'djangocms-attributes-field>=1',
 ]
 
