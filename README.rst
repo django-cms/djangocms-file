@@ -41,7 +41,7 @@ file for additional dependencies:
 
 |python| |django| |djangocms|
 
-* Django Filer 1.2.4 or higher
+* Django Filer 1.7 or higher
 
 Make sure `django-filer <http://django-filer.readthedocs.io/en/latest/installation.html>`_
 is installed and configured appropriately.
