@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('show_file_size', models.BooleanField(default=False, help_text='Appends the file size at the end of the name.', verbose_name='Show file size')),
                 ('attributes', djangocms_attributes_field.fields.AttributesField(default=dict, verbose_name='Attributes', blank=True)),
                 ('cmsplugin_ptr', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, parent_link=True, related_name='djangocms_file_folder', primary_key=True, serialize=False, to='cms.CMSPlugin')),
-                ('folder_src', filer.fields.folder.FilerFolderField(related_name='+', on_delete=django.db.models.deletion.SET_NULL, verbose_name='Folder', to='filer.Folder', null=True)),
+                ('folder_src', filer.fields.folder.FilerFolderField(related_name='+', on_delete=django.db.models.deletion.SET_NULL, verbose_name='Folder', to='filer.folder', null=True)),
             ],
             options={
                 'abstract': False,

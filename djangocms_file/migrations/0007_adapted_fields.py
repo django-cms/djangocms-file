@@ -57,6 +57,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='file',
             name='file_src',
-            field=filer.fields.file.FilerFileField(related_name='+', on_delete=django.db.models.deletion.SET_NULL, verbose_name='File', to='filer.File', null=True),
+            field=filer.fields.file.FilerFileField(related_name='+', on_delete=django.db.models.deletion.SET_NULL, verbose_name='File', to='filer.file', null=True),
         ),
     ]
