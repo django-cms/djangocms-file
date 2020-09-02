@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
@@ -58,7 +57,7 @@ class FolderPlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context['folder_files'] = instance.get_files()
-        return super(FolderPlugin, self).render(context, instance, placeholder)
+        return super().render(context, instance, placeholder)
 
     def get_render_template(self, context, instance, placeholder):
         return 'djangocms_file/{}/folder.html'.format(instance.template)
