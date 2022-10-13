@@ -3,7 +3,7 @@
 {% for file in folder_files %}
     <a href="{{ file.url }}"
         {% if instance.link_target %} target="{{ instance.link_target }}"{% endif %}
-        {{ instance.attributes_str }}>
+        {{ instance.attributes_str }}>
         {{ file }}
         {% if instance.show_file_size %}
             <span>{{ file.size|filesizeformat }}</span>
@@ -19,8 +19,8 @@
     {{ instance.folder_src }}
     {{ instance.get_files }} or {{ folder_files }}
     # Available variables:
-    {{ instance.template }}
+    {{ instance.template }}
     {{ instance.link_target }}
     {{ instance.show_file_size }}
-    {{ instance.attributes_str }}
+    {{ instance.attributes_str }}
 {% endcomment %}
