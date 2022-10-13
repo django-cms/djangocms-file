@@ -39,5 +39,5 @@ jobs:
         uses: liskin/gh-problem-matcher-wrap@v1
         with:
           linters: isort
-          run: isort -c --df djangocms_frontend
+          run: isort -c --df djangocms_file
 

@@ -92,9 +92,9 @@ You can run tests by executing::
 .. |coverage| image:: https://codecov.io/gh/django-cms/djangocms-file/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/divio/djangocms-file
 
-.. |python| image:: https://img.shields.io/badge/python-3.7+-blue.svg
+.. |python| image:: https://img.shields.io/badge/python-3.5+-blue.svg
     :target: https://pypi.org/project/djangocms-file/
-.. |django| image:: https://img.shields.io/badge/django-3.2--4.0-blue.svg
+.. |django| image:: https://img.shields.io/badge/django-2.2--4.0-blue.svg
     :target: https://www.djangoproject.com/
-.. |djangocms| image:: https://img.shields.io/badge/django%20CMS-3.8%2B-blue.svg
+.. |djangocms| image:: https://img.shields.io/badge/django%20CMS-3.7%2B-blue.svg
     :target: https://www.django-cms.org/
