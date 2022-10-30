@@ -39,7 +39,7 @@ class AbstractFile(CMSPlugin):
     """
     Renders a file wrapped by an anchor
     """
-    search_fields = ('name',)
+    search_fields = ('file_name',)
 
     template = models.CharField(
         verbose_name=_('Template'),
