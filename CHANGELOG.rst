@@ -2,6 +2,8 @@
 Changelog
 =========
 
+* Added support for Django 3.2, Django 4.0
+* Added github actions
 
 3.0.0 (2020-09-02)
 ==================
