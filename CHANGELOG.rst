@@ -2,11 +2,11 @@
 Changelog
 =========
 
-unpublished
-===========
 
-* Added support for Django 3.2, Django 4.0
-* Added github actions
+3.0.1 (2023-07-03)
+==================
+
+* Added support for Django 4.2
 * Fixed search_field to point to file_name
 
 
