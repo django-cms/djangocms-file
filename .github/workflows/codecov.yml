@@ -19,7 +19,6 @@ jobs:
       fail-fast: false
       matrix:
         python-version:
-        - 3.8
         - 3.9
         - '3.10'
         - '3.11'
@@ -45,7 +44,8 @@ jobs:
     - name: Upload coverage data
       uses: actions/upload-artifact@v4
       with:
-        name: coverage-data
+        name: coverage-data-${{ matrix.python-version }}
+        include-hidden-files: true
         path: '.coverage*'
 
   coverage:
@@ -65,10 +65,12 @@ jobs:
       - name: Download data
         uses: actions/download-artifact@v4
         with:
-          name: coverage-data
+          pattern: coverage-data-*
+          merge-multiple: true
 
       - name: Combine coverage and fail if it's <100%
         run: |
+          python -m coverage combine
           python -m coverage html --skip-covered --skip-empty
           python -m coverage report --fail-under=100
 
