@@ -1,5 +1,4 @@
 django-cms
 django-filer
-django-app-helper>=3.3.1,<3.3.4
 coverage
 wheel

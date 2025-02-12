@@ -80,15 +80,10 @@ cssselect2==0.7.0 \
     --hash=sha256:1ccd984dab89fc68955043aca4e1b03e0cf29cad9880f6e28e3ba7a74b14aa5a \
     --hash=sha256:fd23a65bfd444595913f02fc71f6b286c29261e354c41d722ca7a261a49b5969
     # via svglib
-dj-database-url==2.2.0 \
-    --hash=sha256:3e792567b0aa9a4884860af05fe2aa4968071ad351e033b6db632f97ac6db9de \
-    --hash=sha256:9f9b05058ddf888f1e6f840048b8d705ff9395e3b52a07165daa3d8b9360551b
-    # via django-app-helper
 django==3.2.25 \
     --hash=sha256:7ca38a78654aee72378594d63e51636c04b8e28574f5505dff630895b5472777 \
     --hash=sha256:a52ea7fcf280b16f7b739cec38fa6d3f8953a5456986944c3ca97e79882b4e38
     # via
-    #   dj-database-url
     #   django-classy-tags
     #   django-cms
     #   django-filer
@@ -98,10 +93,6 @@ django==3.2.25 \
     #   django-treebeard
     #   djangocms-admin-style
     #   easy-thumbnails
-django-app-helper==3.3.3 \
-    --hash=sha256:b2ef5aee51d6149345073a100f05eacc844ff43ece3d67047b110f2d7064d774 \
-    --hash=sha256:f55078f8a911f2c3f3b164aa6bea6158994dbc68476e9b7cbcc7b8ce65e15dac
-    # via -r requirements.in
 django-classy-tags==4.1.0 \
     --hash=sha256:1c784cf1bac49c20a77b8f7d1541867c64076642a160a847ff449588d4e01e55 \
     --hash=sha256:c8d9d1aa2fa6e71c4d866df4dd11d23a69b8d25bbb750b2490a17b161774ee59
@@ -135,9 +126,6 @@ djangocms-admin-style==3.3.1 \
     --hash=sha256:9b76aafda245205e0a88d57efd5097a96c1a7fcb78d7f3efa50955eb980079de \
     --hash=sha256:da20de3831f1a1a74de33fe12bbd3865a0027a982878c02aa1d102b1c799d767
     # via django-cms
-docopt==0.6.2 \
-    --hash=sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491
-    # via django-app-helper
 easy-thumbnails[svg]==2.9 \
     --hash=sha256:532ff633abc5e0d1631b9d0e8e73517c8fa99e37814397fd2ae54c46da244857 \
     --hash=sha256:7a7e83b48c2b6808d58ce101ddb9ea6eae2c5285e608cc337c2e110a7bb442b4
@@ -367,10 +355,6 @@ reportlab==4.2.5 \
     # via
     #   easy-thumbnails
     #   svglib
-six==1.17.0 \
-    --hash=sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274 \
-    --hash=sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81
-    # via django-app-helper
 sqlparse==0.5.3 \
     --hash=sha256:09f67787f56a0b16ecdbde1bfc7f5d9c3371ca683cfeaa8e6ff60b4807ec9272 \
     --hash=sha256:cf2196ed3418f3ba5de6af7e82c694a9fbdbfecccdfc72e281548517081f16ca
@@ -387,9 +371,7 @@ tinycss2==1.4.0 \
 typing-extensions==4.12.2 \
     --hash=sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d \
     --hash=sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8
-    # via
-    #   asgiref
-    #   dj-database-url
+    # via asgiref
 webencodings==0.5.1 \
     --hash=sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78 \
     --hash=sha256:b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923

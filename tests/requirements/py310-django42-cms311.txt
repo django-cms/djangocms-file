@@ -78,15 +78,10 @@ cssselect2==0.7.0 \
     --hash=sha256:1ccd984dab89fc68955043aca4e1b03e0cf29cad9880f6e28e3ba7a74b14aa5a \
     --hash=sha256:fd23a65bfd444595913f02fc71f6b286c29261e354c41d722ca7a261a49b5969
     # via svglib
-dj-database-url==2.0.0 \
-    --hash=sha256:9c9e5f7224f62635a787e9cc3c6762c9be2b19541a21e3c08fa573bd01609b4b \
-    --hash=sha256:a35a9f0f43775ca6f90d819dc456233ef7bcc76b47377d5d908b75c7eb320624
-    # via django-app-helper
-django==4.2.18 \
-    --hash=sha256:52ae8eacf635617c0f13b44f749e5ea13dc34262819b2cc8c8636abb08d82c4b \
-    --hash=sha256:ba52eff7e228f1c775d5b0db2ba53d8c49d2f8bfe6ca0234df6b7dd12fb25b19
+django==4.2.19 \
+    --hash=sha256:6c833be4b0ca614f0a919472a1028a3bbdeb6f056fa04023aeb923346ba2c306 \
+    --hash=sha256:a104e13f219fc55996a4e416ef7d18ab4eeb44e0aa95174c192f16cda9f94e75
     # via
-    #   dj-database-url
     #   django-classy-tags
     #   django-cms
     #   django-filer
@@ -96,10 +91,6 @@ django==4.2.18 \
     #   django-treebeard
     #   djangocms-admin-style
     #   easy-thumbnails
-django-app-helper==3.3.3 \
-    --hash=sha256:b2ef5aee51d6149345073a100f05eacc844ff43ece3d67047b110f2d7064d774 \
-    --hash=sha256:f55078f8a911f2c3f3b164aa6bea6158994dbc68476e9b7cbcc7b8ce65e15dac
-    # via -r requirements.in
 django-classy-tags==4.1.0 \
     --hash=sha256:1c784cf1bac49c20a77b8f7d1541867c64076642a160a847ff449588d4e01e55 \
     --hash=sha256:c8d9d1aa2fa6e71c4d866df4dd11d23a69b8d25bbb750b2490a17b161774ee59
@@ -134,9 +125,6 @@ djangocms-admin-style==3.3.1 \
     --hash=sha256:9b76aafda245205e0a88d57efd5097a96c1a7fcb78d7f3efa50955eb980079de \
     --hash=sha256:da20de3831f1a1a74de33fe12bbd3865a0027a982878c02aa1d102b1c799d767
     # via django-cms
-docopt==0.6.2 \
-    --hash=sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491
-    # via django-app-helper
 easy-thumbnails[svg]==2.10 \
     --hash=sha256:9e446fb9da1ca0cbc99bdd1fe8fdd5c38784323d64393a37e16d13cd736980b2 \
     --hash=sha256:d009462fcd791edf2496e5ed46d044712e1a06b7d4600e4cf2812002e9904ef5
@@ -366,10 +354,6 @@ reportlab==4.2.5 \
     # via
     #   easy-thumbnails
     #   svglib
-six==1.16.0 \
-    --hash=sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926 \
-    --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254
-    # via django-app-helper
 sqlparse==0.5.0 \
     --hash=sha256:714d0a4932c059d16189f58ef5411ec2287a4360f17cdd0edd2d09d4c5087c93 \
     --hash=sha256:c204494cd97479d0e39f28c93d46c0b2d5959c7b9ab904762ea6c7af211c8663
@@ -386,9 +370,7 @@ tinycss2==1.4.0 \
 typing-extensions==4.7.1 \
     --hash=sha256:440d5dd3af93b060174bf433bccd69b0babc3b15b1a8dca43789fd7f61514b36 \
     --hash=sha256:b75ddc264f0ba5615db7ba217daeb99701ad295353c45f9e95963337ceeeffb2
-    # via
-    #   asgiref
-    #   dj-database-url
+    # via asgiref
 webencodings==0.5.1 \
     --hash=sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78 \
     --hash=sha256:b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923
