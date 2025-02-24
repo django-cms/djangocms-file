@@ -1,3 +1,5 @@
+pytest
+pytest-django
 django-cms
 django-filer
 coverage
