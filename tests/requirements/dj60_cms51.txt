@@ -1,0 +1,5 @@
+-r base.txt
+
+django-filer>=3.0
+Django>=6.0,<6.1
+django-cms>=5.1,<5.2
