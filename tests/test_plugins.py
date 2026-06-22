@@ -15,14 +15,12 @@ class FilePluginsTestCase(CMSTestCase):
             template="page.html",
             language=self.language,
         )
-        self.home.publish(self.language)
         self.page = create_page(
             title="content",
             template="page.html",
             language=self.language,
         )
-        self.page.publish(self.language)
-        self.placeholder = self.page.placeholders.get(slot="content")
+        self.placeholder = self.page.get_placeholders(self.language).get(slot="content")
         self.superuser = self.get_superuser()
         self.file = get_filer_file()
         self.folder = get_filer_folder()
@@ -71,7 +69,6 @@ class FilePluginsTestCase(CMSTestCase):
             language=self.language,
             file_src=self.file,
         )
-        self.page.publish(self.language)
         self.assertEqual(plugin.get_plugin_class_instance().name, "File")
 
         with self.login_user_context(self.superuser):
@@ -85,7 +82,6 @@ class FilePluginsTestCase(CMSTestCase):
             language=self.language,
             folder_src=self.folder,
         )
-        self.page.publish(self.language)
         self.assertEqual(plugin.get_plugin_class_instance().name, "Folder")
 
         with self.login_user_context(self.superuser):

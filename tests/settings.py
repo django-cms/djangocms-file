@@ -47,6 +47,8 @@ TEMPLATES = [
 
 SITE_ID=1
 
+CMS_CONFIRM_VERSION4 = True
+
 CMS_TEMPLATES = (
     ("page.html", "Normal page"),
 )
