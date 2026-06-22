@@ -29,7 +29,7 @@ class FilePlugin(CMSPluginBase):
     ]
 
     def get_render_template(self, context, instance, placeholder):
-        return 'djangocms_file/{}/file.html'.format(instance.template)
+        return f'djangocms_file/{instance.template}/file.html'
 
 
 class FolderPlugin(CMSPluginBase):
@@ -59,7 +59,7 @@ class FolderPlugin(CMSPluginBase):
         return super().render(context, instance, placeholder)
 
     def get_render_template(self, context, instance, placeholder):
-        return 'djangocms_file/{}/folder.html'.format(instance.template)
+        return f'djangocms_file/{instance.template}/folder.html'
 
 
 plugin_pool.register_plugin(FilePlugin)
