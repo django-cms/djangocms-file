@@ -87,16 +87,16 @@ You can run tests by executing::
 
 .. |pypi| image:: https://badge.fury.io/py/djangocms-file.svg
     :target: http://badge.fury.io/py/djangocms-file
-.. |build| image:: https://travis-ci.org/django-cms/djangocms-file.svg?branch=master
-    :target: https://travis-ci.org/divio/djangocms-file
+.. |build| image:: https://github.com/django-cms/djangocms-file/actions/workflows/codecov.yml/badge.svg
+    :target: https://github.com/django-cms/djangocms-file/actions/workflows/codecov.yml
 .. |coverage| image:: https://codecov.io/gh/django-cms/djangocms-file/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/divio/djangocms-file
+    :target: https://codecov.io/gh/django-cms/djangocms-file
 
-.. |python| image:: https://img.shields.io/badge/python-3.5+-blue.svg
+.. |python| image:: https://img.shields.io/pypi/pyversions/djangocms-file
     :target: https://pypi.org/project/djangocms-file/
-.. |django| image:: https://img.shields.io/badge/django-2.2--4.0-blue.svg
+.. |django| image:: https://img.shields.io/pypi/frameworkversions/django/djangocms-file
     :target: https://www.djangoproject.com/
-.. |djangocms| image:: https://img.shields.io/badge/django%20CMS-3.7%2B-blue.svg
+.. |djangocms| image:: https://img.shields.io/pypi/frameworkversions/django-cms/djangocms-file
     :target: https://www.django-cms.org/
 
 
