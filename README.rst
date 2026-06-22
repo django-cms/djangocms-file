@@ -35,10 +35,10 @@ One of the easiest contributions you can make is helping to translate this addon
 Documentation
 =============
 
-See ``REQUIREMENTS`` in the `setup.py <https://github.com/divio/djangocms-file/blob/master/setup.py>`_
+See ``dependencies`` in the `pyproject.toml <https://github.com/django-cms/djangocms-file/blob/master/pyproject.toml>`_
 file for additional dependencies:
 
-* Django Filer 1.7 or higher
+* Django Filer 2 or higher
 
 Make sure `django-filer <http://django-filer.readthedocs.io/en/latest/installation.html>`_
 is installed and configured appropriately.
@@ -81,8 +81,8 @@ You can run tests by executing::
 
     virtualenv env
     source env/bin/activate
-    pip install -r test_requirements/base.txt
-    python setup.py test
+    pip install -U pip tox
+    tox
 
 
 .. |pypi| image:: https://badge.fury.io/py/djangocms-file.svg
