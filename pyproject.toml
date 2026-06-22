@@ -1,3 +1,58 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [ "setuptools" ]
+
+[project]
+name = "djangocms-file"
+description = "Adds file plugin to django CMS"
+readme = "README.rst"
+license = "BSD-3-Clause"
+authors = [
+  { name = "Divio AG", email = "info@divio.ch" },
+]
+maintainers = [
+  { name = "Django CMS Association and contributors", email = "info@django-cms.org" },
+]
+requires-python = ">=3.12"
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Web Environment",
+  "Framework :: Django",
+  "Framework :: Django :: 5.2",
+  "Framework :: Django :: 6.0",
+  "Framework :: Django CMS",
+  "Framework :: Django CMS :: 5.0",
+  "Framework :: Django CMS :: 5.1",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Internet :: WWW/HTTP",
+  "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+  "Topic :: Software Development",
+  "Topic :: Software Development :: Libraries",
+]
+dynamic = [ "version" ]
+dependencies = [
+  "Django>=5.2",
+  "django-cms>=5.0",
+  "django-filer>=2",
+  "djangocms-attributes-field>=3",
+]
+urls."Release notes" = "https://github.com/django-cms/djangocms-file/blob/master/CHANGELOG.rst"
+urls.Homepage = "https://github.com/django-cms/djangocms-file"
+urls.Issues = "https://github.com/django-cms/djangocms-file/issues"
+urls.Source = "https://github.com/django-cms/djangocms-file"
+
+[tool.setuptools]
+packages = [ "djangocms_file" ]
+package-data.djangocms_file = [ "LICENSE", "locale/**/*", "README.rst", "templates/**/*" ]
+
+[tool.setuptools.dynamic]
+version = { attr = "djangocms_file.__version__" }
+
 [tool.ruff]
 exclude = [
     ".env",

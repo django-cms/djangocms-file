@@ -115,7 +115,7 @@ class AbstractFile(CMSPlugin):
 
 class AbstractFolder(CMSPlugin):
     """
-    Renders a folder plugin to the selected tempalte
+    Renders a folder plugin to the selected template
     """
     template = models.CharField(
         verbose_name=_('Template'),

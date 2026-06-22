@@ -3,6 +3,19 @@ Changelog
 =========
 
 
+4.0.0 (2026-06-22)
+==================
+
+* Added support for django CMS 5.0 and 5.1
+* Added support for Django 5.2 and 6.0
+* Added support for Python 3.12, 3.13 and 3.14
+* Dropped support for django CMS 3.7 to 3.11
+* Dropped support for Django 3.2, 4.0, 4.1 and 4.2
+* Dropped support for Python 3.8, 3.9, 3.10 and 3.11
+* Ported the test suite to the django CMS 4+ content API
+* Fixed a typo in the ``Folder`` model docstring
+
+
 3.0.1 (2023-07-03)
 ==================
 
