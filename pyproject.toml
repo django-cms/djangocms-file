@@ -47,8 +47,10 @@ urls.Issues = "https://github.com/django-cms/djangocms-file/issues"
 urls.Source = "https://github.com/django-cms/djangocms-file"
 
 [tool.setuptools]
-packages = [ "djangocms_file" ]
 package-data.djangocms_file = [ "LICENSE", "locale/**/*", "README.rst", "templates/**/*" ]
+
+[tool.setuptools.packages.find]
+include = [ "djangocms_file*" ]
 
 [tool.setuptools.dynamic]
 version = { attr = "djangocms_file.__version__" }
