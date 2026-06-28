@@ -3,6 +3,15 @@ Changelog
 =========
 
 
+4.0.1 (2026-06-28)
+==================
+
+* Fixed missing migrations in the built distribution, which caused
+  ``InvalidBasesError`` when the package was installed from a wheel
+  (e.g. on CI). The ``pyproject.toml`` packaging now auto-discovers
+  subpackages instead of listing only the top-level package.
+
+
 4.0.0 (2026-06-22)
 ==================
 
