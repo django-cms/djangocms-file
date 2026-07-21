@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+
+# To compile the test dependencies, run
+# $ tox run -m compile -- -U
+
 from __future__ import annotations
 
 import os
@@ -38,13 +42,20 @@ if __name__ == "__main__":
         "--generate-hashes",
         "--allow-unsafe",
     ] + sys.argv[1:]
-    for interpreter, django_spec, cms_spec, extra_pins, output in MATRIX:
+    # Each interpreter compiles only its own rows, so the full matrix can be
+    # built by running this script once per Python version (e.g. via tox).
+    current = f"python3.{sys.version_info[1]}"
+    rows = [row for row in MATRIX if row[0] == current]
+    if not rows:
+        supported = ", ".join(sorted({row[0] for row in MATRIX}))
+        sys.exit(f"No matrix rows for {current}; run under one of: {supported}")
+    for interpreter, django_spec, cms_spec, extra_pins, output in rows:
         pins = []
         for spec in (django_spec, cms_spec, *extra_pins):
             pins += ["-P", spec]
         subprocess.run(
             [
-                interpreter,
+                sys.executable,
                 *common_args,
                 *pins,
                 "-o",
