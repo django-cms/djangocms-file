@@ -604,9 +604,9 @@ reportlab==5.0.0 \
     # via
     #   easy-thumbnails
     #   svglib
-sqlparse==0.5.5 \
-    --hash=sha256:12a08b3bf3eec877c519589833aed092e2444e68240a3577e8e26148acc7b1ba \
-    --hash=sha256:e20d4a9b0b8585fdf63b10d30066c7c94c5d7a7ec47c889a2d83a3caa93ff28e
+sqlparse==0.6.0 \
+    --hash=sha256:113c35c75365ab9cc9c7231d68c6428fb11c085fc8e9eb1ad659b7ddbf6cd2b9 \
+    --hash=sha256:b861c0288ce2fa56209a9a6412d2e066ac664b3873b89c26c9d8415e8e32996f
     # via django
 svglib==2.0.2 \
     --hash=sha256:0fd04f1eb593802060427d6a59ab5127d65db6b8f5750d572f7df25097e36503 \
