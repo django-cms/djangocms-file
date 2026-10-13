@@ -29,6 +29,10 @@ MATRIX = [
     ("python3.14", "Django>=5.2,<6.0", "django-cms>=5.1a1,<5.2", CMS51_PINS, "py314-django52-cms51.txt"),
     ("python3.14", "Django>=6.0,<6.1", "django-cms>=5.0,<5.1", [], "py314-django60-cms50.txt"),
     ("python3.14", "Django>=6.0,<6.1", "django-cms>=5.1a1,<5.2", CMS51_PINS, "py314-django60-cms51.txt"),
+    ("python3.15", "Django>=5.2,<6.0", "django-cms>=5.0,<5.1", [], "py315-django52-cms50.txt"),
+    ("python3.15", "Django>=5.2,<6.0", "django-cms>=5.1a1,<5.2", CMS51_PINS, "py315-django52-cms51.txt"),
+    ("python3.15", "Django>=6.0,<6.1", "django-cms>=5.0,<5.1", [], "py315-django60-cms50.txt"),
+    ("python3.15", "Django>=6.0,<6.1", "django-cms>=5.1a1,<5.2", CMS51_PINS, "py315-django60-cms51.txt"),
 ]
 
 if __name__ == "__main__":
